@@ -20,7 +20,12 @@ const Addemp = () => {
  const [errors, setErrors] = useState({});
 const navigate = useNavigate();
 const location = useLocation();
-
+const isUpdateMode = location.state && location.state.val;
+useEffect(() => {
+    if (isUpdateMode) {
+      setEmployee(location.state.val);
+    }
+  }, [location]);
  useEffect(() => { const val = location?.state?.val;
 
   if (val) {
@@ -70,12 +75,12 @@ const validate = () => {
     } else if (!/^\d+(\.\d+)?\s?LPA$/i.test(employee.salary.trim())) {
       newErrors.salary = 'Enter salary in format like "6 LPA" or "10.5 LPA"';
     }
-    if (!employee.imgurl.trim()) {newErrors.imgurl = 'Image URL is required';
-    } else if (
-  !/^https?:\/\/.*\.(jpg|jpeg|png|gif)$/i.test(employee.imgurl.trim())
-) {
-  newErrors.imgurl = 'Enter a valid image URL ending in .jpg, .jpeg, .png, or .gif';
-}
+//     if (!employee.imgurl.trim()) {newErrors.imgurl = 'Image URL is required';
+//     } else if (
+//   !/^https?:\/\/.*\.(jpg|jpeg|png|gif)$/i.test(employee.imgurl.trim())
+// ) {
+//   newErrors.imgurl = 'Enter a valid image URL ending in .jpg, .jpeg, .png, or .gif';
+// }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -83,7 +88,9 @@ const validate = () => {
   
   const handleSubmit = () => {
   if (!validate()) return;
+ const isConfirmed = window.confirm(location.state ? 'Do you want to update this employee?' : 'Do you want to add this employee?');
 
+  if (!isConfirmed) return;
 
     const val=location?.state?.val;
     if (val) {
@@ -111,7 +118,7 @@ const validate = () => {
     <div className='form-image-container'>
       <div className='add-form'>
       
-        <h2 style={{color:'GrayText'}}> Add Employee</h2>
+        <h2 style={{color:'cornflowerblue',fontWeight:'lighter'}}> {isUpdateMode ? 'Update Employee' : 'Add Employee'}</h2>
        
       <Grid container spacing={2} >
         <Grid size={{ xs: 6, md: 8 }}>
@@ -206,7 +213,7 @@ const validate = () => {
           onClick={handleSubmit}
            color="primary" 
            size="large">
-            {location.state ? 'Update Employee' : 'Add Employee'}
+            {location.state ? 'Update ' : 'Add '}
           </Button>
         </Grid> 
       </Grid>

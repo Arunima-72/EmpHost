@@ -23,7 +23,9 @@ const Emp = () => {
     }
   };
   const deleteData = (empId) => {
-      if (role === 'admin') {
+      if (role === 'admin') { const confirmDelete = window.confirm('Are you sure you want to delete this employee?');
+    if (!confirmDelete) return;
+
     axiosInstance.delete(`/emp/delete/${empId}`)
       .then(() => {
         alert('Employee deleted successfully');
