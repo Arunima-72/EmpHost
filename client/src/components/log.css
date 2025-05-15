@@ -1,0 +1,94 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 50px;
+    padding: 30px;
+    background-color:white;
+   
+    
+  }
+  
+  .image-section {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .image-section img {
+    max-width: 100%;
+    height: 170%;
+    border-radius: 20px;
+  }
+  
+  .form-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+  }
+  
+  .form-section h1 {
+    margin-bottom: 20px;
+  }
+  
+  .form-section select,
+  .form-section .MuiTextField-root,
+  .form-section button {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 300px;
+  }
+  h2{
+    color: rgb(91, 140, 231);
+  }
+ .image-add {
+    flex: 1;
+    text-align:center;
+    
+    
+  }
+  .image-add img{
+      max-width: 30%;
+    height: 40%;
+    border-radius: 20px;
+   
+
+
+  }
+ .form-image-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  gap:20px;
+}
+.add-form {
+  flex: 1;
+  align-items:zz;
+ 
+}
+.image-section {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  
+}
+
+.image-section img {
+  max-width:100%;
+  height: auto;
+  margin-right: 50%;
+}
+.btn1{
+  color: rgb(76, 116, 129);
+}
+
+.imageadd img{
+  max-width:80%;
+  height: 70%;
+  margin-right: 40%;
+  margin-top: 10%;
+
+}
